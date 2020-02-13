@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'volunteers.apps.VolunteersConfig',  #add so Django will search for templates/models
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
