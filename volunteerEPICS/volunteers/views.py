@@ -4,10 +4,10 @@ from django.http import HttpResponse
 
 
 def signin(request):  #signin page defenition
-    return render(request,'volunteers/signin.html' ) #sends Django to templates for signin.html
+    return render(request, 'volunteers/signin.html' ) #sends Django to templates for signin.html
 
 def signup(request):  #signup page defenition
-        return HttpResponse('<h1>sign up page</h1>')
+    return HttpResponse('<h1>sign up page</h1>')
 
 def thanks(request):   #thank you page defenition
     return HttpResponse('<h1>Thank you for volunteering (making magic!)</h1>')
