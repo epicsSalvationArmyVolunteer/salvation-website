@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>Thank you page using Templete</h1>
+{% extends 'volunteers/base.html'%}
+
+{%block title %}
+Thank you
+{% endblock %}
+
+
+
+{%block content %}
+{% load staticfiles %}
+
+
+<body>
+
+
+<br><br><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      </div>
+      <div class="col-sm">
+        <img align="center" src="thankyou.jpg" width="650" >
+      </div>
+      <div class="col-sm">
+    </div>
+  </div>
+</div>
+
+
+<br><br><br><br>
+
   </body>
-</html>
+
+
+{% endblock %}

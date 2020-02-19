@@ -1,47 +1,27 @@
 <!DOCTYPE html>
 <!--Start of html document -->
-<html lang="en">
+
+{% extends 'volunteers/base.html'%}
+
+{%block title %}
+Sign up Page!
+{% endblock %}
+
+
+
+{%block content %}
+
+
+
 <!---------------------------------------------------------------->
 <!--       Head is the items included in the top of the page    -->
 <!---------------------------------------------------------------->
-  <head>
-    <!-- This ensures proper rendering and touch zooming for all -->
-    <!-- mobile devices -->
-    <meta charset="utf-8">
-  <!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
-    <!--            Ignore this section              ------------->
-    <!-- This is linking to the CSS Sign_In File and Bootstrap -->
-    <link rel="stylesheet" href="sign_in.css">
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="bootstrap.js">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!---------------------------------------------------------->
-    <title>Salvation Army Volunteer Registration</title>
-
-    <!-- Navigation bar at top of page -->
-    <nav class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
-      <!-- Placement of Salvation Army Image -->
-      <a class="navbar-brand">
-        <img src="salvation_army.jpg" alt="Salvation Army Logo" height="60"
-     width="60" class="d-inline-block align-top-left"/>
-   </a>
       <!------------------------------------>
       <!--Creation of the Donation Button -->
       <!------------------------------------>
 
-      <form class="form-inline">
-        <button type="button" style="margin:5px;" class="btn btn-danger">Volunteer Registration</button>
-        <button type="button" style="margin:5px;" class="btn btn-danger">Volunteer Sign In</button>
-        <button type="button" style="margin:5px;" class="btn btn-danger">Employee Login</button>
-        <button type="button" style="margin:5px;" class="btn btn-danger">Donate</button>
-      </form>
 
-    </nav>
-    <!-- End of Navigaton Bar -->
-    <br>
 
     <h2 align="center">Volunteer Registration Form</h2>
 
@@ -270,7 +250,7 @@
               <span style="white-space: nowrap;"><input type="checkbox" name="data" value="some topic" id="some id" /><label for="food_service">Food Service</label></span><br/>
               <span style="white-space: nowrap;"><input type="checkbox" name="data" value="some topic" id="some id" /><label for="senior_services">Senior Services</label></span><br/>
               <span style="white-space: nowrap;"><input type="checkbox" name="data" value="some topic" id="some id" /><label for="boy_girls_glub">Boy and Girls Club</label></span><br/>
-              <span style="white-space: nowrap;"><input type="checkbox" name="data" value="some topic" id="some id" /><label for="food_distributions">Monthly Food Distributions</label></span><br/>
+              <span style="white-space: nowrap;"><input type="checkbox" name="data" value="some topic" id="some id" /><label for="food_distributions">Monthly Food Di stributions</label></span><br/>
               <span style="white-space: nowrap;"><input type="checkbox" name="data" value="some topic" id="some id" /><label for="maintenance">Maintenance/House Keeping</label></span><br/>
               <span style="white-space: nowrap; margin:90px;"><input type="checkbox" name="data" value="some topic" id="some id" /><label for="life_skills">Life Skills (Teacher/Consultant)</label></span><br/>
               <span style="white-space: nowrap; margin:90px;"><input type="checkbox" name="data" value="some topic" id="some id" /><label for="shelter">Family Emergency Shelter</label></span><br/>
@@ -311,13 +291,7 @@
   <div class="col"></div>
   </div>
 
-
+  {% endblock %}
 <!--  </form> -->
-</body>
 
-    <br>
-
-<img src="san_antonio_skyline.jpg" class="img-fluid" alt="Responsive image">
-
-</html>
 <!-- End of HTML Document -->

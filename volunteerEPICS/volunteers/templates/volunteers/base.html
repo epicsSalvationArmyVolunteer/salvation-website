@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Mikayla here, this base.html contains the navigation bar and the skyline image, this makes it so we can just extend this code across all html pages!>
+<!--Start of html document -->
+{% load static %}
+<html lang="en">
+<!---------------------------------------------------------------->
+<!--       Head is the items included in the top of the page    -->
+<!---------------------------------------------------------------->
+  <head>
+    <!-- This ensures proper rendering and touch zooming for all -->
+    <!-- mobile devices -->
+    <meta charset="utf-8">
+  <!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+
+    <!--            Ignore this section              ------------->
+    <!-- This is linking to the CSS Sign_In File and Bootstrap -->
+    <link rel="stylesheet" href="sign_in.css">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.js">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!---------------------------------------------------------->
+    <title>Salvation Army Volunteer Registration</title>
+
+    <!-- Navigation bar at top of page -->
+    <nav class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
+      <!-- Placement of Salvation Army Image -->
+      <a class="navbar-brand">
+        <img src="salvation_army.jpg" alt="Salvation Army Logo" height="60"
+     width="60" class="d-inline-block align-top-left"/>
+   </a>
+      <!------------------------------------>
+      <!--Creation of the Donation Button -->
+      <!------------------------------------>
+
+      <form class="form-inline">
+        <button type="button" style="margin:5px;" class="btn btn-danger">
+        <a href="/sign-up">Volunteer Registration</a></button>
+        <button type="button" style="margin:5px;" class="btn btn-danger">
+        <a href="/sign-in">Volunteer Sign In</a></button>
+        <button type="button" style="margin:5px;" class="btn btn-danger">
+          <a href="/admin">Employee Login</a></button>
+        <button type="button" style="margin:5px;" class="btn btn-danger">Donate</button>
+        <!--Missing link to donation page to do later -Mikyla-->
+
+
+      </form>
+
+    </nav>
+
+<body>
+  <div id="content", name=content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+
+
+
+  <img src="{% static 'volunteerEPICS/san_antonio_skyline.jpg' %}" class="img-fluid" alt=" san_antonio_skyline">
+
+  </html>
+  <!-- End of HTML Document -->
