@@ -3,6 +3,7 @@ from django.db import models
 from  django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.db.models import Max
 # Create your models here.
 
 
@@ -16,8 +17,8 @@ class Volunteer(models.Model):
         return self.user.username
 
     def last_event(self):
-        """Returns the last event (the event with the most recent date) the volunteer attended"""
-        return self.event.all.filter(date=min)
+        """Last event the volunteer attended"""
+        return self.events.latest('date')
 
 
 #See https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
@@ -34,9 +35,6 @@ def save_user_volunteer(sender, instance, **kwargs):
     instance.volunteer.save()
 
 
-
-
-
 class Event(models.Model):
     """Event model"""
     name = models.CharField(max_length=200)
@@ -46,7 +44,7 @@ class Event(models.Model):
 
     #Link volunteers to events with a Many to Many field.
     #See https://docs.djangoproject.com/en/3.0/ref/models/fields/#django.db.models.ManyToManyField
-    volunteers = models.ManyToManyField(Volunteer)
+    volunteers = models.ManyToManyField(Volunteer, related_name='events')
 
     def __str__(self):
         return self.name
@@ -54,4 +52,3 @@ class Event(models.Model):
     def volunteers_at_event(self):
         """Returns a query set of all volunteers at event"""
         return self.volunteers
-
