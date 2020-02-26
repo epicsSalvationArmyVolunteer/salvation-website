@@ -1,9 +1,10 @@
 """models that are used in the volunteer tracking application"""
+import datetime
 from django.db import models
 from  django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.db.models import Max
+from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 
@@ -13,12 +14,32 @@ class Volunteer(models.Model):
     #See https://docs.djangoproject.com/en/3.0/ref/models/fields/#django.db.models.OneToOneField
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
+    #Phone number field - see
+    #https://stackoverflow.com/questions/19130942/whats-the-best-way-to-store-phone-number-in-django-models
+    phone = PhoneNumberField()
+
+    emergency_contact_name = models.CharField(max_length=200)
+    emergency_contact_phone = PhoneNumberField()
+
+    employer_name = models.CharField(max_length=200)
+
+    #Add gender choice field
+
+    birth_date = models.DateField(verbose_name='date of birth')
+
+    #We only want to store state and zip
+    state_zip = models.CharField(max_length=500)
+
     def __str__(self):
         return self.user.username
 
     def last_event(self):
         """Last event the volunteer attended"""
         return self.events.latest('date')
+
+    def events_since(self, since=models.DateTimeField):
+        """all events the volunteer has attended between since and now"""
+        return self.events.filter(date__gte=since, date__lte=datetime.datetime.now())
 
 
 #See https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone

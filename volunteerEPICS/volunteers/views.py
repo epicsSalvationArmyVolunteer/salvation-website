@@ -7,7 +7,7 @@ def signin(request):  #signin page defenition
     return render(request, 'volunteers/signin.html' ) #sends Django to templates for signin.html
 
 def signup(request):  #signup page defenition
-    return HttpResponse('<h1>sign up page</h1>')
+    return render(request, 'volunteers/signup.html')
 
 def thanks(request):   #thank you page defenition
     return HttpResponse('<h1>Thank you for volunteering (making magic!)</h1>')
