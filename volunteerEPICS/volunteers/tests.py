@@ -3,7 +3,7 @@ Tests for volunteers app
 """
 from django.test import TestCase
 from django.contrib.auth.models import User
-from volunteers.models import Event, Volunteer
+from volunteerEPICS.volunteers.models import Event
 
 # Create your tests here.
 
@@ -55,3 +55,5 @@ class EventModelTests(TestCase):
 
         #I am unsure of how to assert that the query set vols does not contain user3_not_at_event.volunteer
         #self.assertIsNot(vols, user3_not_at_event.volunteer)
+
+

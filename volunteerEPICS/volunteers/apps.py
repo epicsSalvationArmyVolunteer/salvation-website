@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from volunteerEPICS.volunteers.models import Volunteer
 
 
 class VolunteersConfig(AppConfig):
@@ -16,3 +17,10 @@ def volunteer_hours(volunteer, number_of_events):
     if number_of_events <= 0:
         return "Bad range, range must be a positive integer"
     return volunteer.events.all.filter()
+
+
+def all_employees_of_company(company):
+    """
+    Return all volunteers whose employer is company
+    """
+    return Volunteer.objects.filter(employer=company)
