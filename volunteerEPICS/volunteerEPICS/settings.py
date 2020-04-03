@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'volunteer_app',
         'USER': 'django',
-        'PASSWORD': 'dj ango',
+        'PASSWORD': 'django',
         'HOST': 'localhost',
         'OPTIONS':{
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",

@@ -18,18 +18,18 @@ class Volunteer(models.Model):
     #https://stackoverflow.com/questions/19130942/whats-the-best-way-to-store-phone-number-in-django-models
     phone = PhoneNumberField()
 
-    emergency_contact_name = models.CharField(max_length=200)
+    emergency_contact_name = models.CharField(default='null', max_length=200)
     emergency_contact_phone = PhoneNumberField()
 
-    employer_name = models.CharField(max_length=200)
+    employer_name = models.CharField(default='null',max_length=200)
 
-    #Add gender choice field
+    #TODO Add gender choice field
     gender = models.CharField(default='null', max_length=100)
 
-    birth_date = models.DateField(verbose_name='date of birth')
+    birth_date = models.DateField(default = '0001-01-01',verbose_name='date of birth')
 
-    #We only want to store state and zip
-    state_zip = models.CharField(max_length=500)
+    #Don't care about address, only state and zip.
+    state_zip = models.CharField(default = 'null',max_length=500)
 
     def __str__(self):
         return self.user.username
@@ -41,6 +41,11 @@ class Volunteer(models.Model):
     def events_since(self, since=models.DateTimeField):
         """all events the volunteer has attended between since and now"""
         return self.events.filter(date__gte=since, date__lte=datetime.datetime.now())
+
+    def hours_since(self, since=models.DateTimeField):
+        """the total number of hours the volunteer has worked between since and now"""
+        events = self.events_since(since)
+        return events.sum('length')
 
 
 #See https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
