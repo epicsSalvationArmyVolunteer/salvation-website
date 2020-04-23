@@ -1,13 +1,37 @@
 
 
 {% extends 'volunteers/base.html'%}
-
 {%block title %}
-Thank you
+Volunteer Sign-in form
 {% endblock %}
 
 
 
 {%block content %}
-  <h1>Sign in page using template</h1>
+
+  <body>
+    <br><br><br><br><br> <!--spacing-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+      </div>
+        <div class="col-sm">
+          <form>
+            <h1>Volunteer Sign-In</h1>
+              <br><br><br><br>
+              <!-- spacing out "volunteer sign in"-->
+                Email:
+                <input type="text">
+                </input>
+          </form>
+                <button type="button" class="btn btn-primary">SUBMIT</button>
+        </div>
+      <div class="col-sm">
+        <!--blank for spacing-->
+      </div>
+    </div>
+  </div>
+  <br><br><br><br> <!--spacing-->
+  </body>
+
 {% endblock %}
