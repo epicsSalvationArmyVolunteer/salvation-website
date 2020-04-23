@@ -1,7 +1,8 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <!-- Mikayla here, this base.html contains the navigation bar and the skyline image, this makes it so we can just extend this code across all html pages!>
 <!--Start of html document -->
-{% load static %}
+
 <html lang="en">
 <!---------------------------------------------------------------->
 <!--       Head is the items included in the top of the page    -->
@@ -14,9 +15,9 @@
 
     <!--            Ignore this section              ------------->
     <!-- This is linking to the CSS Sign_In File and Bootstrap -->
-    <link rel="stylesheet" href="sign_in.css">
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="bootstrap.js">
+    <link rel="stylesheet" href="{% static 'volunteerEPICS/sign_in.css' %}">
+    <link rel="stylesheet" href="{% static 'volunteerEPICS/bootstrap.css' %}">
+    <link rel="stylesheet" href="{%static 'volunteerEPICS/bootstrap.js' %}">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -27,7 +28,7 @@
     <nav class="navbar navbar-dark bg-dark" style="background-color: #e3f2fd;">
       <!-- Placement of Salvation Army Image -->
       <a class="navbar-brand">
-        <img src="salvation_army.jpg" alt="Salvation Army Logo" height="60"
+        <img src="{% static 'volunteerEPICS/salvation_army_logo.jpg' %}" alt="Salvation Army Logo" height="60"
      width="60" class="d-inline-block align-top-left"/>
    </a>
       <!------------------------------------>
@@ -58,7 +59,7 @@
 
 
 
-  <img src="{% static 'volunteerEPICS/san_antonio_skyline.jpg' %}" class="img-fluid" alt=" san_antonio_skyline">
+  <img src="{% static 'volunteerEPICS/san_antonio_skyline.jpg' %}"  alt=" san_antonio_skyline">
 
   </html>
   <!-- End of HTML Document -->

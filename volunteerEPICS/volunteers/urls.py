@@ -7,4 +7,6 @@ urlpatterns = [
     path('sign-out/', views.signout, name='sign-out'), #links to /volunteers/sign-out
     path('thanks/', views.thanks, name='thanks'),  #links to /volunteers/thanks
     path('', views.volunteers, name='volunteershome'), #links to /volunteers (as indecaded by the '')
+    path('create/', views.create, name='create'), #test simple form for Mikayla
+
 ]

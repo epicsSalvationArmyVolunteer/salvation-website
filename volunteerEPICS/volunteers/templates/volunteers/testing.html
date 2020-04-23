@@ -1,7 +1,24 @@
-{ %extends 'base.html'% }
+{% extends 'volunteers/base.html'%}
 
 
 
-{% block body% }
-<form method="post">
-{%endblock %}
+{% block content%}
+<div class="container">
+
+
+
+<form sction="register" method="post">
+{% csrf_token %}
+
+
+<input type="text" name="first_name" placeholder="First Name"><br>
+<input type="text" name="last_name" placeholder="Last Name"><br>
+<input type="email" name="email" placeholder="Email "><br>
+<input type="text" name="username" placeholder="Username "><br>
+
+
+
+<button type="submit">submit</button>
+</form>
+  </div>
+{%endblock%}
