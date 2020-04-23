@@ -1,5 +1,5 @@
 from django.contrib import admin
-from volunteers.models import Event
+from volunteers.models import Event, Volunteer
 
 # Register your models here.
 class EventAdmin(admin.ModelAdmin):
@@ -7,3 +7,5 @@ class EventAdmin(admin.ModelAdmin):
     exclude = ('volunteers',)
 
 admin.site.register(Event, EventAdmin)
+
+admin.site.register(Volunteer)
