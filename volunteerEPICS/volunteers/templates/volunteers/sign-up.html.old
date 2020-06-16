@@ -78,7 +78,7 @@ Sign up Page!
         <div class="col">
           <label for="name"><b>First Name:</b></label>
           <section class="first_name">
-            {{form.First_name}}
+            {{form.first_name}}
           </section>
 
 
@@ -92,7 +92,7 @@ Sign up Page!
 
         <section class="last_name">
           <label for="name"><b>Last Name:</b></label>
-            {{form.Last_name}}
+            {{form.last_name}}
         </section>
 
         </div>
@@ -111,8 +111,14 @@ Sign up Page!
             <label for="phone"><b>Phone Number:</b></label>
               {{form.phone}}
           </section>
+        </div>
 
 
+        <div class="col">
+          <section class="email">
+            <label for="email"><b>Password:</b></label>
+              {{form.password}}
+          </section>
         </div>
 
       </div>
@@ -179,28 +185,10 @@ Sign up Page!
 
 
 
-
-
         <div class="col">
 
-            <label for="state"><b>State (Residency):</b></label>
-            {{form.state}}
-
-
-        </div>
-
-        <div class="col">
-
-              <label for="zip"><b>Zip(Area) Code:</b></label>
+              <label for="zip"><b>State and Zip Code:</b></label>
                  {{form.state_zip}}
-            </section>
-
-        </div>
-
-        <div class="col">
-
-              <label for="Event"><b>Event volunteering for:</b></label>
-                 {{form.event_volunteering}}
             </section>
 
         </div>
@@ -249,7 +237,7 @@ Sign up Page!
 
   <div class="col">
 
-       <button align="center"  input type="submit" class="btn btn-danger btn-lg">Submit Form</button>
+       <button align="center"  type="submit" class="btn btn-danger btn-lg">Submit Form</button>
     </form>
   </div>
 

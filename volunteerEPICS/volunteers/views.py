@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-#from django.http import HttpResponse
-from .forms import VolunteerForm
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User, auth
+from django.http import HttpResponseRedirect
+from .forms import VolunteerCreationForm
+from .models import Volunteer
+from django.contrib.auth import login, authenticate
 # Create your views here.
 
 
@@ -15,34 +15,41 @@ def signout(request):  #signup page defenition
 def thanks(request):   #thank you page defenition
     return render(request,'volunteers/thanks.html' )
 
-def signup(request):  #sign out page defenition
-    form=VolunteerForm()
-
-    if request.method=='POST':
-        print(request.POST)
-        form=VolunteerForm(request.POST) #instance=profile)
-        if form.is_valid():
-            form.save()
-    context={'form':form}
-
-    return render(request,'volunteers/signup.html', context )  #this will look at the templeate subdirecorty and find the .html file
 
 def volunteers(request): #defenition for just /volunteers
-    return render(request,'volunteers/volunteershome.html' )
+    return render(request, 'volunteers/volunteershome.html' )
 
-
-
-
-def create(request):
+def signUp(request):
+    """Registers new users, logs them in, and handles addtional comments"""
     if request.method == 'POST':
-        first_name=request.POST['first_name']
-        last_name=request.POST['last_name']
-        email=request.POST['email']
-        username=request.POST['username']
+        print(request.POST)
+        volunteer_form = VolunteerCreationForm(request.POST)
+        if volunteer_form.is_valid():
+            user = volunteer_form.save()
+            user.refresh_from_db() # loads the volunteer instance created by the signal
+            
+            # populate volunteer with extra information from form
+            user.volunteer.phone = volunteer_form.cleaned_data.get('phone')
+            user.volunteer.emergency_contact_name = volunteer_form.cleaned_data.get('emergency_contact_name')
+            user.volunteer.emergency_contact_phone = volunteer_form.cleaned_data.get('emergency_contact_phone')
+            user.volunteer.employer_name = volunteer_form.cleaned_data.get('employer_name')
+            user.volunteer.gender = volunteer_form.cleaned_data.get('gender')
+            user.volunteer.birth_date = volunteer_form.cleaned_data.get('birth_date')
+            user.volunteer.state_zip = volunteer_form.cleaned_data.get('state_zip')
+            
+            # If a comment is included, it should be saved seperately, and probably sent as an email to someone. How do we do this?
 
-        user = User.objects.create_user(username=username, email=email,first_name=first_name, last_name=last_name)
-        user.save();
-        print('user created!')
-        return redirect('/')
+            # log user in and redirect to volunteer homepage
+            username = volunteer_form.cleaned_data.get('username')
+            raw_password = volunteer_form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return HttpResponseRedirect('/volunteers')
+    
     else:
-        return render (request, 'volunteers/testing.html' )
+        volunteer_form = VolunteerCreationForm()
+    
+    context = {'form':volunteer_form}
+    return render(request, 'volunteers/signup.html', context)
+
+
