@@ -11,8 +11,8 @@ __The following packages are downloaded using Python 3:__
 | ---------------------------------------- | :----------------------------------------------------------: |
 | _pip3 install virtual env_               |    This allows for the creation of a virtual environment     |
 | _pip3 install mysql_                     |  mySQL program for storing information from required forms   |
-| _pip3 install django-phonenumbers-field_ | Installs the phone numbers field library for access to phone number data |
-| ...                                      |                         ...                          |
+| _pip3 install django-phonenumbers-field_ | Handles phonenumber storage/validation                       |
+| ...                                      |                         ...                                  |
 
 ## Creating a Virtual Environment
 
