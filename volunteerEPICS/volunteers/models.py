@@ -23,7 +23,6 @@ class Volunteer(models.Model):
 
     employer_name = models.CharField(default='null',max_length=200)
 
-    #TODO Add gender choice field
     gender = models.CharField(default='null', max_length=100)
 
     birth_date = models.DateField(default = '0001-01-01',verbose_name='date of birth')
