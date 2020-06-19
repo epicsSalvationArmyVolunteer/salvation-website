@@ -6,10 +6,6 @@ class VolunteersConfig(AppConfig):
     name = 'volunteers'
 
 
-def volunteer_login(volunteer, event):
-    """Call this function to "login" a volunteer to an event"""
-    event.add(volunteer)
-
 
 def volunteer_hours(volunteer, number_of_events):
     """Return the number of hours in the events in the specified range"""
