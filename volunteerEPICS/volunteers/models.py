@@ -46,6 +46,10 @@ class Volunteer(models.Model):
         events = self.events_since(since)
         return events.sum('length')
 
+    def register(self, event):
+        """Create association between self and Event 'event'"""
+        event.volunteers.add(self)
+
 
 #See https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 #for reciever code

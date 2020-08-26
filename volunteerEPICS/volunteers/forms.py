@@ -1,5 +1,6 @@
+import datetime
 from django.forms import ModelForm
-from .models import Volunteer
+from .models import Volunteer, Event
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -25,13 +26,16 @@ class VolunteerCreationForm(UserCreationForm):
     fields = ('username', 'first_name', 'last_name', 'email')
 
 
-#<h1>Sign out Page used for testing</h1>
-#<form action"" method="post">
- # {% csrf_token %}
-  #{{form.First_name.label}}
-  #{{form.First_name}}
+class VolunteerSignInForm(ModelForm):
+  """Form to sign volunteers into events"""
+  event = forms.ChoiceField(choices=Event.objects.filter(date=datetime.date.today()))
+    
+  class Meta:
+    model = User
+    fields = ('username', 'password')
+    help_texts = {
+      'username': None,
+      'password': None
+    }
 
-
-  #<input type ="submit">
-
-    #</form>
+  

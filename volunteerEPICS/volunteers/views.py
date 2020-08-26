@@ -1,22 +1,36 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from .forms import VolunteerCreationForm
+from .forms import VolunteerCreationForm, VolunteerSignInForm
 from .models import Volunteer
 from django.contrib.auth import login, authenticate
 # Create your views here.
 
 
-def signin(request):  #signin page defenition
-    return render(request, 'volunteers/signin.html' ) #sends Django to templates for signin.html
+def signIn(request):  #signin page
+    """Logs users into events"""
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        event = request.POST['event']
+        user = authenticate(request, username=username, password=password)
+        # if user is not None:
+            # user.volunteer.register(event)    
+    
+    else:
+        form = VolunteerSignInForm()
+    
+    context = {'form':form}
+    return render(request, 'volunteers/signin.html', context)
 
-def signout(request):  #signup page defenition
+
+def signout(request):  #signup page definition
         return render(request,'volunteers/signout.html' )
 
-def thanks(request):   #thank you page defenition
+def thanks(request):   #thank you page definition
     return render(request,'volunteers/thanks.html' )
 
 
-def volunteers(request): #defenition for just /volunteers
+def volunteers(request): #definition for just /volunteers
     return render(request, 'volunteers/volunteershome.html' )
 
 def signUp(request):

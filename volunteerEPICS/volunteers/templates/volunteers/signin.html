@@ -6,32 +6,16 @@ Volunteer Sign-in form
 {% endblock %}
 
 
-
 {%block content %}
+<div class = "container">
+<form section = "login" method = "POST">
+ {% csrf_token %}
+    
+ {{form.as_p}}
 
-  <body>
-    <br><br><br><br><br> <!--spacing-->
-  <div class="container">
-    <div class="row">
-      <div class="col-sm">
-      </div>
-        <div class="col-sm">
-          <form>
-            <h1>Volunteer Sign-In</h1>
-              <br><br><br><br>
-              <!-- spacing out "volunteer sign in"-->
-                Email:
-                <input type="text">
-                </input>
-          </form>
-                <button type="button" class="btn btn-primary">SUBMIT</button>
-        </div>
-      <div class="col-sm">
-        <!--blank for spacing-->
-      </div>
-    </div>
-  </div>
-  <br><br><br><br> <!--spacing-->
-  </body>
+    <button type = "submit">Sign In</button>
+
+</form>
+</div>
 
 {% endblock %}
